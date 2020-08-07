@@ -37,7 +37,8 @@ client.on('message', function (message) {
 			var postHTML = document.getElementsByClassName('post').item('0');
 		    }
 		    var title = postHTML.getElementsByTagName('H3').item(0).getElementsByTagName('A').item(0).innerHTML;
-		    var body = postHTML.getElementsByClassName('content').item(0).innerHTML;
+		    var body = postHTML.getElementsByClassName('content').item(0).innerHTML.replace(/<[^<>]+>/g, '');
+		    
 		    if (body.length > 512) {
 			body = body.substring(0, 509);
 			body += '...';
